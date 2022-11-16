@@ -1,9 +1,10 @@
 # IBM-Project-25096-1659953665
-Smart Fashion Recommender Application
 
-TEAM MEMBERS
+##Smart Fashion Recommender Application
 
-MAGESH
-NILASH
-GURUMOORTHY
-AADITYA
+###TEAM MEMBERS
+
+*MAGESH
+*NILASH
+*GURUMOORTHY
+*AADITYA
