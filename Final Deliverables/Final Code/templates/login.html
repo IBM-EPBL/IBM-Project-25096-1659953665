@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>smart fashion</title>
+  
+    <link rel="stylesheet" href="{{url_for('static',filename='login.css')}}">
+
+</head>
+<body>
+    <div class="container">
+                    <div class="second">
+                   
+                    <form>
+                        <fieldset>
+                            <legend>LOGIN</legend><br><br>
+                        <input type="email" class="input-box" placeholder="Your Email Id" id="exampleFormControlInput" required><br><br><br>
+                        <input type="Password" class="input-box" placeholder="Password" required id="exampleFormControlInput1">
+                        <button type="submit" class="submit-btn" ><a href="/index">submit</a></button><br>
+                        <input type="checkbox"><span>Remember Me</span>
+                        
+                    </form>
+                    Not a member?<a href="/register"> Register here</a><br><br><br>
+                     <a href="">Forgot Password</a>
+                    </fieldset>
+                     </div>
+                    </div>
+                </div>  
+            </div>
+        </div>
+    </div>
+
+<script>
+    function signinusers() {
+      var uname = document.getElementById('exampleFormControlInput').value;
+      var upass = document.getElementById('exampleFormControlInput1').value;
+      fetchres = fetch('/signinusers', {
+        method: 'POST',
+        body: JSON.stringify({ id: uname, password: upass }),
+        contentType: "application/json"
+      })
+      fetchres.then(res => { return res.json() })
+        .then(
+          d => {
+            console.log(d)
+            if (d.result == "Done") {localStorage.setItem("NTkey",String(d.key));localStorage.setItem("NTname",String(d.name));localStorage.setItem("NTid",String(d.userid));window.location.replace('/news');}
+            else if (d.result == "Not Found") {
+              document.getElementById("mainbody").innerHTML +=
+                `<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                            <strong>Username or Password is Incorrect!</strong>
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                      </div>`
+            }
+          })
+    }
+  </script>
+    
+</body>
+</html>

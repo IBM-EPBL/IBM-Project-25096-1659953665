@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>smart fashion Register page</title>
+    <link rel="stylesheet" href="/static/first.css">
+</head>
+<body>
+    <div class="container">
+                    <div class="first">
+                   
+                    <form>
+                        <fieldset>
+                            <legend>REGISTER</legend><br>
+                            <input type="name" class="input-box" placeholder="Name" id="IName" required><br><br>
+                        <input type="email" class="input-box" placeholder="Your Email Id" id="IEmail" required><br><br>
+                        <input type="Password" class="input-box" placeholder="Password" id="Ipass" required><br><br>
+                        <input type="Re-Enter Password" class="input-box" placeholder="Re-Enter Password" required>
+                        <button type="submit" class="submit-btn" onclick="signupusers()" ><a href="/login">submit</a></button><br>
+                        <input type="checkbox" id="checkbox">
+                        <label for="checkbox">I agree to these<a href="#"> Terms & Conditions</a></label><br>
+                        <br>
+                        Already a member?<a href="/"> login here</a><br>
+                        </fieldset>
+                    </form><br>
+                     </div>
+                    </div>
+                </div>  
+            </div>
+        </div>
+    </div>
+
+<script>
+    function signupusers() {
+      var uname = document.getElementById('IName').value;
+      var uemail = document.getElementById('IEmail').value;
+      var upass = document.getElementById('Ipass').value;
+      fetchres = fetch('/signupusers', {
+        method: 'POST',
+        body:JSON.stringify({name: uname,email:uemail,password: upass}),
+        contentType: "application/json"
+      });
+      console.log(fetchres);
+      fetchres.then(res => { return res.json() })
+        .then(
+          d => {
+            console.log(d)
+            if (d.result == "Done")  {window.location.replace('/login');}
+            else if (d.result == "Not Found") {
+              document.getElementById("mainbody").innerHTML +=
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                            <strong>Username or Password is Incorrect!</strong>
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                      </div>
+            }
+          })
+    }
+</script>
+    
+</body>
+</html>
