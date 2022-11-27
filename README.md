@@ -2,11 +2,11 @@
 
 ## Smart Fashion Recommender Application
 
-### TEAM MEMBERS
-   * MAGESH
-   * NILASH
-   * GURUMOORTHY
-   * AADITYA
+### Team Members
+   * Magesh
+   * Nilash
+   * Gurumoorthy
+   * Aaditya
 
 ### Tree Structure
 
